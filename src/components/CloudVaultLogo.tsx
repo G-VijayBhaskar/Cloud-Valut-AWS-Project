@@ -1,0 +1,50 @@
+import React from 'react';
+
+interface CloudVaultLogoProps {
+  size?: number;
+  className?: string;
+}
+
+export const CloudVaultLogo: React.FC<CloudVaultLogoProps> = ({ size = 32, className = '' }) => {
+  return (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 128 128" 
+      width={size} 
+      height={size}
+      className={className}
+      style={{ display: 'inline-block', verticalAlign: 'middle', flexShrink: 0 }}
+    >
+      <defs>
+        <linearGradient id={`cvGrad-${size}`} x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#3b82f6" />
+          <stop offset="100%" stopColor="#8b5cf6" />
+        </linearGradient>
+        <linearGradient id={`lockGrad-${size}`} x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="100%" stopColor="#e0e7ff" />
+        </linearGradient>
+      </defs>
+
+      {/* Geometric Cloud Contour */}
+      <path 
+        d="M 36 94 C 22.7 94 12 83.3 12 70 C 12 57.8 21.1 47.7 33 45.4 C 36.8 29.8 50.8 18 67.5 18 C 86.3 18 101.8 32.2 103.9 50.7 C 114.7 53.2 122.5 62.9 122.5 74.5 C 122.5 86.4 112.9 94 101 94 Z" 
+        fill={`url(#cvGrad-${size})`}
+      />
+
+      {/* Vault Lock Core */}
+      <path 
+        d="M 52 56 V 47 C 52 40.4 57.4 35 64 35 C 70.6 35 76 40.4 76 47 V 56" 
+        fill="none" 
+        stroke={`url(#lockGrad-${size})`} 
+        strokeWidth="6" 
+        strokeLinecap="round"
+      />
+      
+      <rect x="46" y="55" width="36" height="28" rx="6" fill={`url(#lockGrad-${size})`} />
+      
+      <circle cx="64" cy="65" r="3.5" fill="#3b82f6" />
+      <polygon points="62,67 66,67 67,75 61,75" fill="#3b82f6" />
+    </svg>
+  );
+};
